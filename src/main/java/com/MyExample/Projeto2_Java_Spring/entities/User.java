@@ -3,11 +3,11 @@ package com.MyExample.Projeto2_Java_Spring.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 //OBS: A interface 'Serializable' é responsável por transformar os objetos (nesse caso a classe 'User') em uma 
 //CADEIA DE BYTES. Dessa forma, os objetos são capazes de trafegar pela rede, serem salvos em arquivos e etc.
