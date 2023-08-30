@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 
 @Entity
@@ -24,11 +26,12 @@ public class Order implements Serializable{  //classe referente aos pedidos
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  
 	private Long id;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT") 
 	private Instant moment;
 	
 	//Declarando associações
 	@ManyToOne  //Indica que esse atributo será uma foreign key
-	@JoinColumn(name = "client id")  //Nomeação da FK
+	@JoinColumn(name = "client_id")  //Nomeação da FK
 	private User client;
 	
 	//Declarando construtores

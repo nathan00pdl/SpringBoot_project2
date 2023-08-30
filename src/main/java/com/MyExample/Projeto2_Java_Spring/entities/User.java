@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 //OBS: A interface 'Serializable' é responsável por transformar os objetos (nesse caso a classe 'User') em uma 
 //CADEIA DE BYTES. Dessa forma, os objetos são capazes de trafegar pela rede, serem salvos em arquivos e etc.
@@ -31,6 +33,7 @@ public class User implements Serializable{
 	private String password;
 	
 	//Declarando associações
+	@JsonIgnore  //A collection 'orders' não será incluído na representação JSON do objeto 'Client' *DÚVIDA: ISSO AINDA NÃO FICOU CLARO*
 	@OneToMany(mappedBy =  "client")
 	private List<Order> orders = new ArrayList<>();
 	
