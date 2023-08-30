@@ -14,7 +14,7 @@ import com.MyExample.Projeto2_Java_Spring.repositories.UserRepository;
 @Profile("test")  //Indica que essa classe é uma classe de configuração específica para o perfil de 'test' (configurado no arquivo 'application.properties')
 public class TestConfig implements CommandLineRunner{
 	
-	@Autowired  //Resolve a dependência e associa uma instânci desse objeto ('userRepository') à classe 'TesteConfig'
+	@Autowired  //Resolve a dependência e associa uma instância desse objeto ('userRepository') à classe 'TesteConfig'
 	private UserRepository userRepository;  //Declaração de dependência
 
 	@Override
