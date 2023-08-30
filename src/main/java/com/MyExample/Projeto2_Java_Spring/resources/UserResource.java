@@ -19,13 +19,13 @@ import com.MyExample.Projeto2_Java_Spring.services.UserService;
 @RequestMapping(value = "/users")
 public class UserResource { 
 
-	//Declaração de dependência:
+	//Declarando de dependência:
 	
 	@Autowired  //Resolve a dependência e associa uma instância desse objeto ('userRepository') à classe 'userService'
 	private UserService service;
 	
 	
-	//Declaração de endpoints:
+	//Declarando de endpoints:
 	
 	//Acessando os usuários
 	@GetMapping //Indica que o método responde pela requisição do tipo 'GET' do protocolo http  

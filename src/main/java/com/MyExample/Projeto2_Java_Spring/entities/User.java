@@ -1,12 +1,15 @@
 package com.MyExample.Projeto2_Java_Spring.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 //OBS: A interface 'Serializable' é responsável por transformar os objetos (nesse caso a classe 'User') em uma 
@@ -28,6 +31,8 @@ public class User implements Serializable{
 	private String password;
 	
 	//Declarando associações
+	@OneToMany(mappedBy =  "client")
+	private List<Order> orders = new ArrayList<>();
 	
 	//Declaradando Construtores
 	public User () {}
@@ -81,6 +86,10 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public List<Order> getOrders() {
+		return orders;
+	}
 
 	
 	//Declaradando métodos Equals e HashCode
@@ -100,6 +109,7 @@ public class User implements Serializable{
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
+
 	
 	//Declaradando métodos
 
