@@ -22,8 +22,7 @@ public class Order implements Serializable{  //classe referente aos pedidos
 
 	private static final long serialVersionUID = 1L;
 
-	
-	@Id  //Indicação de que o atributo 'id' será uma primary key do banco de dados H2
+	@Id  
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  
 	private Long id;
 	

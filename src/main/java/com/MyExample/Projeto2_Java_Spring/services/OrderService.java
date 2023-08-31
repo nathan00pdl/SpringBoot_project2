@@ -12,20 +12,20 @@ import com.MyExample.Projeto2_Java_Spring.repositories.OrderRepository;
 @Service
 public class OrderService {
 
-	//Declarando de dependências:
+	//Declarando "Injeção de dependência"
 	
-	@Autowired  //Resolve a dependência e associa uma instância desse objeto ('userRepository') à classe 'OrderService' 
+	@Autowired 
 	private OrderRepository repository;
 	
 	
-	//Declarando de endpoints:
+	//Declarando endpoints
 	
-	//Retornando todos os usuários do banco de dados
+	//Retornando todos os pedidos do banco de dados
 	public List<Order> findAll(){
 		return repository.findAll();
 	}
 	
-	//Retornando usuários pelo id
+	//Retornando pedidos pelo id
 	public Order FindById(Long id) {
 		Optional<Order> obj = repository.findById(id);
 		return obj.get();

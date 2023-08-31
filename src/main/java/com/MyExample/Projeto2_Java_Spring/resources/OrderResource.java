@@ -12,29 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
 import com.MyExample.Projeto2_Java_Spring.entities.Order;
 import com.MyExample.Projeto2_Java_Spring.services.OrderService;
 
-//Classe 'OrderResource' é responsável por forneceer recursos web (implementados por controladores rest) 
-//correspondentes para a classe 'Order'
-
 @RestController 
 @RequestMapping(value = "/oreders")
 public class OrderResource { 
 
-	//Declarando de dependência:
+	//Declarando "Injeção de dependência"
 	
-	@Autowired  //Resolve a dependência e associa uma instância desse objeto ('userRepository') à classe 'userService'
+	@Autowired  
 	private OrderService service;
 	
 	
 	//Declarando de endpoints:
 	
-	//Acessando os usuários
+	//Acessando os pedidos
 	@GetMapping //Indica que o método responde pela requisição do tipo 'GET' do protocolo http  
 	public ResponseEntity<List<Order>> findAll(){
 		List<Order> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
-	//Retornando usuários pelo id
+	//Retornando pedidos pelo id
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Order> findById(@PathVariable Long id){
 		Order obj = service.FindById(id);

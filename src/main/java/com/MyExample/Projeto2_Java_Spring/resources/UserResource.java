@@ -19,7 +19,7 @@ import com.MyExample.Projeto2_Java_Spring.services.UserService;
 @RequestMapping(value = "/users")
 public class UserResource { 
 
-	//Declarando de dependência:
+	//Declarando "Injeção de dependência"
 	
 	@Autowired  //Resolve a dependência e associa uma instância desse objeto ('userRepository') à classe 'userService'
 	private UserService service;

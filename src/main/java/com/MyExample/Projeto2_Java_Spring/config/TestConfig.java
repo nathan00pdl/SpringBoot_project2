@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.MyExample.Projeto2_Java_Spring.entities.Category;
 import com.MyExample.Projeto2_Java_Spring.entities.Order;
 import com.MyExample.Projeto2_Java_Spring.entities.User;
 import com.MyExample.Projeto2_Java_Spring.entities.enums.OrderStatus;
+import com.MyExample.Projeto2_Java_Spring.repositories.CategoryRepository;
 import com.MyExample.Projeto2_Java_Spring.repositories.OrderRepository;
 import com.MyExample.Projeto2_Java_Spring.repositories.UserRepository;
 
@@ -18,20 +20,26 @@ import com.MyExample.Projeto2_Java_Spring.repositories.UserRepository;
 @Profile("test")  //Indica que essa classe é uma classe de configuração específica para o perfil de 'test' (configurado no arquivo 'application.properties')
 public class TestConfig implements CommandLineRunner{
 	
-	//Declarando de dependências
+	//Declarando "Injeções de dependências"
 	
 	@Autowired  //Resolve a dependência e associa uma instância desse objeto ('userRepository') à classe 'TesteConfig'
 	private UserRepository userRepository;  
 
-	
 	@Autowired
 	private OrderRepository orderRepository;
 	
+	@Autowired
+	private CategoryRepository categoryRepository;
 	
 	//Declarando métodos
 	
 	@Override
 	public void run(String... args) throws Exception {
+		
+		//Instanciando categorias que serão salvos no banco de dados H2
+		Category cat1 = new Category(null, "Electronics"); 
+		Category cat2 = new Category(null, "Books"); 
+		Category cat3 = new Category(null, "Computers");
 		
 		//Instanciando usuários que serão salvos no banco de dados H2
 		User u1 = new User(null, "João Pedro", "jp.silva@gmail.com", "988888888", "123456"); 
@@ -43,9 +51,10 @@ public class TestConfig implements CommandLineRunner{
 		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2); 
 		Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.DELIVERED, u1); 
 		
-		//Salvando usuários e pedidos no banco de dados H2
+		//Salvando usuários, pedidos e categorias no banco de dados H2
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
+		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
 	}
 	
 }

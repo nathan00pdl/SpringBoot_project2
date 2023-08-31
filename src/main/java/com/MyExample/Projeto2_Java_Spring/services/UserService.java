@@ -12,13 +12,13 @@ import com.MyExample.Projeto2_Java_Spring.repositories.UserRepository;
 @Service
 public class UserService {
 
-	//Declarando de dependências:
+	//Declarando "Injeção de dependência"
 	
-	@Autowired  //Resolve a dependência e associa uma instância desse objeto ('userRepository') à classe 'UserService' 
+	@Autowired  //Resolve a dependência e associa uma instância desse objeto ('UserRepository') à classe 'UserService' 
 	private UserRepository repository;
 	
 	
-	//Declarando de endpoints:
+	//Declarando endpoints
 	
 	//Retornando todos os usuários do banco de dados
 	public List<User> findAll(){
