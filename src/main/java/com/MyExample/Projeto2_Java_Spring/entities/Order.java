@@ -31,8 +31,8 @@ public class Order implements Serializable{  //classe referente aos pedidos
 	
 	
 	//Declarando associações
-	@ManyToOne  //Indica que esse atributo será uma foreign key
-	@JoinColumn(name = "client_id")  //Nomeação da FK
+	@ManyToOne  
+	@JoinColumn(name = "client_id")  //Nomeação da FK (na tabela 'tb_order' terá uma chave estrangeira chamada 'client_id')
 	private User client;
 	
 	private Integer orderStatus;
