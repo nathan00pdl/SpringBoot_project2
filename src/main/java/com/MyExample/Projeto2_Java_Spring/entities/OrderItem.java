@@ -74,6 +74,13 @@ public class OrderItem implements Serializable{
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+	
+	
+	//Declarando método para calcular o preço subtotal do pedido
+	public Double getSubTotal() {
+		return price * quantity;
+	}
+	
 
 	@Override
 	public boolean equals(Object obj) {

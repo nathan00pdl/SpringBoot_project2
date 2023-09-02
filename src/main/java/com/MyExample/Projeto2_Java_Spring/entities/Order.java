@@ -109,6 +109,17 @@ public class Order implements Serializable{  //classe referente aos pedidos
 	}
 	
 	
+	//Declarando método para calacular o preço total do pedido (total do pedido = soma dos preços subtotais dos itens de pedido)
+	public Double getTotal() {
+		double sum = 0.0;
+		
+		for (OrderItem x : items) {
+			sum = sum + x.getSubTotal();
+		}
+		return sum;
+	}
+	
+	
 	//Declaradando métodos Equals e HashCode
 	@Override
 	public int hashCode() {
