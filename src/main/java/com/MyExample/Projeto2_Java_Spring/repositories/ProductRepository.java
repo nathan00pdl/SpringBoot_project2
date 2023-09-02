@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.MyExample.Projeto2_Java_Spring.entities.Product;
 
-//Interface responsável por instanciar objetos do tipo 'repository' (esses objetos terão funcionalidades direcionadas para os usuários 'User')
+//Interface responsável por instanciar objetos do tipo 'repository'
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>{

@@ -2,7 +2,9 @@ package com.MyExample.Projeto2_Java_Spring.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.MyExample.Projeto2_Java_Spring.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -13,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -31,11 +34,16 @@ public class Order implements Serializable{  //classe referente aos pedidos
 	
 	
 	//Declarando associações
+	
 	@ManyToOne  
 	@JoinColumn(name = "client_id")  //Nomeação da FK (na tabela 'tb_order' terá uma chave estrangeira chamada 'client_id')
 	private User client;
 	
 	private Integer orderStatus;
+	
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderItem> items = new HashSet<>();
+	
 	
 	//Declarando construtores
 	public Order() {}
@@ -83,6 +91,11 @@ public class Order implements Serializable{  //classe referente aos pedidos
 		this.client = client;
 	}
 
+	
+	public Set<OrderItem> getItem(){
+		return items;
+	}
+	
 	
 	//Declaradando métodos Equals e HashCode
 	@Override

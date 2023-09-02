@@ -32,10 +32,13 @@ public class User implements Serializable{
 	private String phone;
 	private String password;
 	
+	
 	//Declarando associações
+	
 	@JsonIgnore  //A collection 'orders' não será incluído na representação JSON do objeto 'Client' *DÚVIDA: ISSO AINDA NÃO FICOU CLARO*
 	@OneToMany(mappedBy =  "client")
 	private List<Order> orders = new ArrayList<>();
+	
 	
 	//Declaradando Construtores
 	public User () {}

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.MyExample.Projeto2_Java_Spring.entities.pk.OrderItemPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -15,13 +16,13 @@ public class OrderItem implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	//Declarando atributo identificador (corresponde à chave primária)
-	
-	@EmbeddedId
-	private OrderItemPK id;
-	
 	private Integer quantity;
 	private Double price;
+	
+	//Declarando atributo identificador (corresponde à chave primária)
+	@EmbeddedId
+	private OrderItemPK id = new OrderItemPK();
+	
 	
 	//Declarando construtores
 	public OrderItem() {}
@@ -35,6 +36,7 @@ public class OrderItem implements Serializable{
 
 	
 	//Declarando métodos getters e setters
+	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
 	}

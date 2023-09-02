@@ -13,7 +13,7 @@ import com.MyExample.Projeto2_Java_Spring.entities.Order;
 import com.MyExample.Projeto2_Java_Spring.services.OrderService;
 
 @RestController 
-@RequestMapping(value = "/oreders")
+@RequestMapping(value = "/orders")
 public class OrderResource { 
 
 	//Declarando "Injeção de dependência"
