@@ -25,15 +25,14 @@ public class Order implements Serializable{  //classe referente aos pedidos
 
 	private static final long serialVersionUID = 1L;
 
+	//Declarando associações
+	
 	@Id  
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  
 	private Long id;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT") 
 	private Instant moment;
-	
-	
-	//Declarando associações
 	
 	@ManyToOne  
 	@JoinColumn(name = "client_id")  //Nomeação da FK (na tabela 'tb_order' terá uma chave estrangeira chamada 'client_id')
@@ -42,7 +41,7 @@ public class Order implements Serializable{  //classe referente aos pedidos
 	private Integer orderStatus;
 	
 	@OneToMany(mappedBy = "id.order")
-	private Set<OrderItem> items = new HashSet<>();
+	private Set<OrderItem> items = new HashSet<>();  //Coleção de itens
 	
 	
 	//Declarando construtores
