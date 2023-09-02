@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.MyExample.Projeto2_Java_Spring.entities.Category;
 import com.MyExample.Projeto2_Java_Spring.entities.Order;
 import com.MyExample.Projeto2_Java_Spring.entities.OrderItem;
+import com.MyExample.Projeto2_Java_Spring.entities.Payment;
 import com.MyExample.Projeto2_Java_Spring.entities.Product;
 import com.MyExample.Projeto2_Java_Spring.entities.User;
 import com.MyExample.Projeto2_Java_Spring.entities.enums.OrderStatus;
@@ -101,5 +102,13 @@ public class TestConfig implements CommandLineRunner {
 		
 		//Salvando itens de pedido no banco de dados H2
 		orderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
+		
+		
+		//Adicionando pagamento (Payment) para o pedido 1 (o1) no banco de dados H2
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		
+		//Salvando pagamento no banco de dados H2
+		orderRepository.save(o1);
 	}
 }
