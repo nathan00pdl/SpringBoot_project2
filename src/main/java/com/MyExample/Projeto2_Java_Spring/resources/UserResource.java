@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +49,7 @@ public class UserResource {
 	
 	//OBS: Os dois endpints acima utilizam 'GetMapping' pois possuem a funcionalide de RECUPERAR dados do banco de dados
 	
-	//Inserindo usuários no banco de dados H2
+	//Inserindo (INSERT) usuários no banco de dados H2
 	@PostMapping
 	public 	ResponseEntity<User> insert(@RequestBody User obj){
 		obj = service.insert(obj);
@@ -58,11 +59,18 @@ public class UserResource {
 	
 	//OBS: O endpoint acima utiliza 'PostMapping' pois possui a funcionalide de INSERIR dados no banco de dados
 	
-	//Deletando usuários do banco de dados H2
+	//Deletando (DELETE) usuários do banco de dados H2
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	//Atualizando (UPDATE) usuários do banco de dados H2
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj){
+		obj = service.update(id, obj);
+		return ResponseEntity.ok().body(obj);
 	}
 }
 

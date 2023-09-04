@@ -31,13 +31,26 @@ public class UserService {
 		return obj.get();
 	}
 	
-	//Salvando usuários no banco de dados H2
+	//Inserindo (INSERT) usuários no banco de dados H2
 	public User insert(User obj) {
 		return repository.save(obj);
 	}
 	
-	//Deletando usuários do banco de dados H2
+	//Deletando (DELETE) usuários do banco de dados H2
 	public void delete(Long id) {
 		repository.deleteById(id);;
+	}
+	
+	//Atualizando (UPDATE) usuários no banco de dados H2
+	public User update(Long id, User obj) {
+		User entity = repository.getReferenceById(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+	
+	private	void updateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
 	}
 }
