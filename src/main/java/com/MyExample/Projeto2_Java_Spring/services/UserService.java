@@ -30,4 +30,9 @@ public class UserService {
 		Optional<User> obj = repository.findById(id);
 		return obj.get();
 	}
+	
+	//Salvando usuários no banco de dados H2
+	public User insert(User obj) {
+		return repository.save(obj);
+	}
 }
